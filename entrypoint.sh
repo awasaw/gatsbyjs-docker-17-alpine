@@ -8,7 +8,9 @@ export PATH="$PATH:/usr/local/bin/gatsby"
 if [ ! -f "$GATSBY_DIR/package.json" ]
 then
   echo "Initializing Gatsby..."
-  gatsby new $GATSBY_DIR
+  gatsby new $GATSBY_DIR/tmptrepepe
+  mv $GATSBY_DIR/tmptrepepe/*  $GATSBY_DIR
+  rm -rf $GATSBY_DIR/tmptrepepe
 fi
 find $GATSBY_DIR/node_modules/ -empty -type d -exec npm install \;
 
