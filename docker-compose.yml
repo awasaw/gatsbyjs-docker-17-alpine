@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  gatsby:
+    build: .
+    image: gatsbyjs:latest
+    container_name: gatsby_develop
+    restart: unless-stopped
+    working_dir: /home/node
+    volumes:
+      - node_modules:/home/node/node_modules
+      - .:/home/node
+    network_mode: "bridge"
+    ports:
+      - "8008:8008"
+    environment:
+      - NODE_ENV=development
+    command: ["develop"]
+volumes:
+  node_modules:
+    external: true
+    name: node_modules
